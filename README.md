@@ -1,2 +1,6 @@
-# EDCTheme
- Elite Dangerous Cockpit Theme Tool
+# EDCPT
+
+
+Video Tutorial:
+https://streamable.com/csalcy
+
