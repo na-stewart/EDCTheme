@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="835.0" prefWidth="480.0" style="-fx-background-color: black;" stylesheets="@../css/metro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.com.sunsetdev.EDCTheme.controller.DesktopController">
+   <children>
+      <ImageView fitHeight="194.0" fitWidth="369.0" layoutX="62.0" layoutY="-16.0">
+         <image>
+            <Image url="@../images/ed.jpeg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="183.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EDCTheme">
+         <font>
+            <Font name="Garuda" size="24.0" />
+         </font>
+      </Text>
+      <Pane layoutX="25.0" layoutY="195.0" prefHeight="577.0" prefWidth="442.0" style="-fx-background-color: #2E2E2E;" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="195.0">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" layoutY="13.0" prefHeight="543.0" prefWidth="442.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="444.0" spacing="120.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="27.0" prefWidth="140.0" spacing="10.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="time" prefHeight="25.0" prefWidth="82.0" promptText="10:00 AM" />
+                           </children>
+                        </HBox>
+                        <ChoiceBox fx:id="themeChoiceBox" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="56.0" prefWidth="308.0" spacing="5.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme Name">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="themeName" prefHeight="25.0" prefWidth="308.0" promptText="sunset theme" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="56.0" prefWidth="308.0" spacing="5.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Red Matrix">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="redMatrix" prefHeight="25.0" prefWidth="308.0" promptText="1, 0, 0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="56.0" prefWidth="308.0" spacing="5.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Green Matrix">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="greenMatrix" prefHeight="25.0" prefWidth="308.0" promptText="0.5, 0.7, 0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="56.0" prefWidth="308.0" spacing="5.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Blue Matrix">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="blueMatrix" prefHeight="25.0" prefWidth="308.0" promptText="0, 0, 0.1" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="0.0" prefWidth="340.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Links:" />
+                        <Text fill="#7481f2" onMouseClicked="#openCockpitEditorLink" strokeType="OUTSIDE" strokeWidth="0.0" text="http://arkku.com/elite/hud_editor/" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Text>
+                        <Text fill="#7481f2" onMouseClicked="#openRedditLink" strokeType="OUTSIDE" strokeWidth="0.0" text="https://www.reddit.com/r/EliteDangerous/commen..." underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox fillWidth="false" prefHeight="80.0" prefWidth="413.0" spacing="10.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="413.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="490.0" spacing="10.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#add" prefHeight="27.0" prefWidth="66.0" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="66.0" text="Delete" />
+                                    <Button mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="70.0" text="Update" />
+                                    <Button mnemonicParsing="false" onAction="#clear" prefHeight="27.0" prefWidth="66.0" text="Clear" />
+                                 </children>
+                              </HBox>
+                              <VBox alignment="CENTER" prefHeight="45.0" prefWidth="257.0" spacing="2.0">
+                                 <children>
+                                    <Button fx:id="setThemeButton" mnemonicParsing="false" onAction="#setTheme" text="Set Theme" />
+                                    <CheckBox fx:id="onTime" mnemonicParsing="false" prefHeight="21.0" prefWidth="110.0" text="On Time" textFill="WHITE" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="466.0" spacing="24.0">
+                           <children>
+                              <TextField fx:id="graphicsConfPath" editable="false" prefHeight="25.0" prefWidth="320.0" promptText="GraphicsConfiguration.xml Path" />
+                              <Button mnemonicParsing="false" onAction="#importGraphicsConf" prefHeight="25.0" prefWidth="66.0" text="Import" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Text fill="WHITE" layoutX="7.0" layoutY="19.0" onMouseClicked="#openAuthorLink" strokeType="OUTSIDE" strokeWidth="0.0" text="By sunsetdev" underline="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </children>
+</AnchorPane>
