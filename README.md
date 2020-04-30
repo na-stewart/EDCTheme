@@ -21,25 +21,25 @@ https://streamable.com/csalcy
 
 ## Tutorial
 
-# Import
+### Import
 First import the GraphicsConfiguration.XML file. This file can be found in the install directory of Elite Dangerous. For example: \Elite Dangerous\Products\elite-dangerous-64\GraphicsConfiguration.xml.
 However this may be different for different users, make sure to install the version of this application that applies.
 
 WPerms: Application requests for admin permissions because GraphicsConfiguration.xml is within Program Files.
 WOPerms: Appplication does not request for permissions but cannot modify an a file within Program Files.
 
-# Add
+### Add
 Simply fill the fields with your desired color and click the add button. The time field can be set to either a 12 hour timestamp such as 3:00 PM or 15:00.
 
-# Update
+### Update
 Select the theme you want to update, make changes within the desired field and click the update button.
 
-# Delete
+### Delete
 Select the theme you want to be deleted and click the delete button.
 
-# Clear
+### Clear
 The clear button only clears the fields and does not effect your themes.
 
-# Set Theme
+### Set Theme
 Pressing the Set Theme button will set the theme for you. Checking the On Time box will have the application automatically switch the theme for you at the desired timestamp. However if On Time is checked the Set Theme button will be disabled.
 
