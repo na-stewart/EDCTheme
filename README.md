@@ -29,7 +29,7 @@ WPerms: Application requests for admin permissions because GraphicsConfiguration
 WOPerms: Appplication does not request for permissions but cannot modify an a file within Program Files.
 
 ### Add
-Simply fill the fields with your desired color and click the add button. The time field can be set to either a 12 hour timestamp such as 3:00 PM or 15:00.
+Simply fill the fields with your desired color and click the add button. The time field can be set to either a 12 hour timestamp such as 3:00 PM or a 24 hour timestamp such as 15:00.
 
 ### Update
 Select the theme you want to update, make changes within the desired field and click the update button.
