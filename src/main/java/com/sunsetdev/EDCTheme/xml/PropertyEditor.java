@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class PropertyEditor {
     private final File xmlFile = new File(System.getProperty("user.home") +
-            File.separator + "edcpt" + File.separator + "conf.xml");
+            File.separator + "edct" + File.separator + "conf.xml");
     private final Properties props = new Properties();
 
 
@@ -49,7 +49,7 @@ public class PropertyEditor {
 
     private void createFile() {
         try {
-            if (!xmlFile.getParentFile().mkdirs() || xmlFile.createNewFile() )
+            if (!xmlFile.getParentFile().mkdirs() || !xmlFile.createNewFile() )
                 throw new IOException("Error creating new file: " + xmlFile.getAbsolutePath());
             initXmlFile();
         } catch (IOException e) {
