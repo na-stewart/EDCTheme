@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.com.sunsetdev.EDCTheme.model.Theme;
@@ -31,7 +32,9 @@ public class DesktopController implements Initializable {
     private CheckBox onTime;
     @FXML
     private Button setThemeButton;
-    private EdctXMLEditor edctXMLEditor = new EdctXMLEditor();
+    @FXML
+    private WebView themeEditor;
+    private final EdctXMLEditor edctXMLEditor = new EdctXMLEditor();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,6 +44,7 @@ public class DesktopController implements Initializable {
         initThemeChoiceBoxListener();
         initOnTimeListener();
         initThemeTimeListener();
+        themeEditor.getEngine().load("http://arkku.com/elite/hud_editor/");
     }
 
 
@@ -91,8 +95,8 @@ public class DesktopController implements Initializable {
 
 
     @FXML
-    private void openRedditLink(){
-        Util.OPEN_BROWSER("https://www.reddit.com/r/EliteDangerous/comments/2p3784/you_can_manually_customize_the_gui_colors/");
+    private void openFrontierLink(){
+        Util.OPEN_BROWSER("https://forums.frontier.co.uk/threads/no2o-the-definitive-list-of-1-7-2-2-compatible-hud-colour-color-configs-please-add-yours.259311/");
     }
 
     @FXML
@@ -203,8 +207,8 @@ public class DesktopController implements Initializable {
     }
 
     private void sortThemeChoiceBox(){
-        Collections.sort(themeChoiceBox.getItems(), (o1, o2) -> {
-            if (o1.getLocalTime() == null || o2.getLocalTime() == null)  {
+        themeChoiceBox.getItems().sort((o1, o2) -> {
+            if (o1.getLocalTime() == null || o2.getLocalTime() == null) {
                 return -1;
             } else
                 return Double.compare(o1.getLocalTime().toNanoOfDay(), o2.getLocalTime().toNanoOfDay());

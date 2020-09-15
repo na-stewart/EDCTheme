@@ -21,7 +21,7 @@ public class Main extends Application {
             String resource = "resources/view/Main.fxml";
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(resource)));
             stage.setScene(new Scene(root));
-            stage.setTitle("EDCTheme V1.0");
+            stage.setTitle("EDCTheme V1.1");
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("resources/images/edctimg.png"))));
             stage.setResizable(false);
             stage.setOnCloseRequest(e -> System.exit(0));

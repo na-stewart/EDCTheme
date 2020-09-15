@@ -12,22 +12,18 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.util.List;
 
 //Elite Dangerous Cockpit Theme Xml Editor.
 public class EdctXMLEditor {
 
-
-    private File themesXmlFile = new File("themes.xml");
-    private Document themesDocument = documentBuilder(themesXmlFile);
+    private final File themesXmlFile = new File("themes.xml");
+    private File graphicsConfXmlFile;
+    private final Document themesDocument = documentBuilder(themesXmlFile);
     private Document graphicsConfDocument;
-    private PropertyEditor propertyEditor = new PropertyEditor();
-    //put this and on time checkbox in properties xml class.
-
+    private final PropertyEditor propertyEditor = new PropertyEditor();
 
 
     public EdctXMLEditor()  {
@@ -35,9 +31,26 @@ public class EdctXMLEditor {
     }
 
 
+    private void backupGraphicsConf() throws IOException {
+        File backup = new File(graphicsConfXmlFile + "-backup");
+        if (backup.exists())
+            return;
+        try (FileInputStream fis = new FileInputStream(graphicsConfXmlFile);
+             FileOutputStream fos = new FileOutputStream(backup)) {
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer)) > 0) {
+                fos.write(buffer, 0, length);
+            }
+        }
+    }
+
+
     public void importGraphicsConf(){
         try{
-            graphicsConfDocument = documentBuilder(new File(propertyEditor.getKey("gconf")));
+            graphicsConfXmlFile = new File(propertyEditor.getKey("gconf"));
+            graphicsConfDocument = documentBuilder(graphicsConfXmlFile);
+            backupGraphicsConf();
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -91,7 +104,6 @@ public class EdctXMLEditor {
     }
 
     public void deleteThemeInXml(Theme theme) {
-
         themesDocument.getRootElement().removeContent(getElementByTheme(theme));
         output(themesDocument, themesXmlFile);
     }
@@ -125,25 +137,27 @@ public class EdctXMLEditor {
 
 
     private void output(Document doc, File file){
-        try (FileOutputStream f = new FileOutputStream(file)){
+        try (FileOutputStream fo = new FileOutputStream(file)){
             XMLOutputter xmlOutput = new XMLOutputter();
             xmlOutput.setFormat(Format.getPrettyFormat());
-            xmlOutput.output(doc, f);
+            xmlOutput.output(doc, fo);
         } catch (IOException e) {
             e.printStackTrace();
             Util.ALERT("Failed to save theme!", "An error occurred saving theme!", Alert.AlertType.ERROR);
         }
     }
 
+
+
     private Document documentBuilder(File file){
         try {
-            if (!themesXmlFile.exists())
+            if (!themesXmlFile.exists()) {
                 tryToCreateFile();
+            }
             return new SAXBuilder().build(file);
         } catch (JDOMException | IOException ignored) {}
         return new Document(new Element("themes"));
     }
-
 
 
     public PropertyEditor getPropertyEditor() {

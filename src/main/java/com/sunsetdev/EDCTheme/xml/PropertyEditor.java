@@ -6,8 +6,7 @@ import java.util.Properties;
 public class PropertyEditor {
     private final File xmlFile = new File(System.getProperty("user.home") +
             File.separator + "edcpt" + File.separator + "conf.xml");
-    private Properties props = new Properties();
-    private static PropertyEditor instance;
+    private final Properties props = new Properties();
 
 
     PropertyEditor() {
@@ -50,27 +49,18 @@ public class PropertyEditor {
 
     private void createFile() {
         try {
-            xmlFile.getParentFile().mkdirs();
-            xmlFile.createNewFile();
+            if (!xmlFile.getParentFile().mkdirs() || xmlFile.createNewFile() )
+                throw new IOException("Error creating new file: " + xmlFile.getAbsolutePath());
             initXmlFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void initXmlFile() {
+    private void initXmlFile() throws IOException {
         try (OutputStream out = new FileOutputStream(xmlFile)) {
             props.setProperty("on_time", "false");
             props.storeToXML(out, "");
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-
-    public static PropertyEditor getInstance() {
-        if (instance == null)
-            instance = new PropertyEditor();
-        return instance;
-    }
-
 }
