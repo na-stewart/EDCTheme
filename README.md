@@ -23,10 +23,6 @@ https://streamable.com/csalcy
 
 ### Import
 First import the GraphicsConfiguration.XML file. This file can be found in the install directory of Elite Dangerous. For example: \Elite Dangerous\Products\elite-dangerous-64\GraphicsConfiguration.xml.
-However this may be different for different users, make sure to install the version of this application that applies.
-
-WPerms: Application requests for admin permissions because GraphicsConfiguration.xml is within Program Files.
-WOPerms: Appplication does not request for permissions but cannot modify an a file within Program Files.
 
 ### Add
 Simply fill the fields with your desired color and click the add button. The time field can be set to either a 12 hour timestamp such as 3:00 PM or a 24 hour timestamp such as 15:00.
