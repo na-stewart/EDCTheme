@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Theme implements Cloneable{
+public class Theme implements Cloneable {
     private String name;
     private String redMatrix;
     private String greenMatrix;
@@ -78,13 +78,13 @@ public class Theme implements Cloneable{
         this.timeString = timeString;
     }
 
-
     public void setTimeWithString(String timeString) throws ParseException {
         if (!timeString.isEmpty()) {
             this.localTime = checkedLocalTime(timeString);
             this.timeString = timeString;
         }
     }
+    
     public LocalTime getLocalTime() {
         return localTime;
     }
@@ -104,7 +104,6 @@ public class Theme implements Cloneable{
             throw new MatrixFormattingException(matrix + " matrix is not correctly formatted! Must be in form 0,0,0!");
         }
     }
-
 
     private LocalTime checkedLocalTime(String time) throws ParseException {
         LocalTime parsedTime;
@@ -131,8 +130,7 @@ public class Theme implements Cloneable{
         return name;
     }
 
-    public Object clone() throws CloneNotSupportedException
-    {
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 }
