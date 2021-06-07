@@ -48,7 +48,7 @@ public class DesktopController implements Initializable {
     }
 
 
-    private void tryToGetConfigurationFromProperties(){
+    private void tryToGetConfigurationFromProperties() {
         try {
             graphicsConfPath.setText(edctXMLEditor.getPropertyEditor().getKey("gconf"));
             onTime.setSelected(Boolean.parseBoolean(edctXMLEditor.getPropertyEditor().getKey("on_time")));
@@ -57,7 +57,7 @@ public class DesktopController implements Initializable {
         }
     }
 
-    private void initOnTimeListener(){
+    private void initOnTimeListener() {
         onTime.selectedProperty().addListener((observable, oldValue, newValue) -> {
             edctXMLEditor.getPropertyEditor().saveToConf("on_time", newValue.toString());
             setThemeButton.setDisable(onTime.isSelected());
@@ -66,7 +66,7 @@ public class DesktopController implements Initializable {
         });
     }
 
-    private void initThemeTimeListener(){
+    private void initThemeTimeListener() {
         ScheduledExecutorService timer = Executors.newSingleThreadScheduledExecutor();
         Runnable frameGrabber = (()-> Platform.runLater(this::setToClosestTheme));
         timer.scheduleAtFixedRate(frameGrabber, 0, 1, TimeUnit.MINUTES);
@@ -80,8 +80,7 @@ public class DesktopController implements Initializable {
         }
     }
 
-
-    private void initThemeChoiceBoxListener(){
+    private void initThemeChoiceBoxListener() {
         themeChoiceBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 themeName.setText(newValue.getName());
@@ -93,25 +92,23 @@ public class DesktopController implements Initializable {
         });
     }
 
-
     @FXML
-    private void openFrontierLink(){
+    private void openFrontierLink() {
         Util.OPEN_BROWSER("https://forums.frontier.co.uk/threads/no2o-the-definitive-list-of-1-7-2-2-compatible-hud-colour-color-configs-please-add-yours.259311/");
     }
 
     @FXML
-    private void openCockpitEditorLink(){
+    private void openCockpitEditorLink() {
         Util.OPEN_BROWSER("http://arkku.com/elite/hud_editor/");
     }
 
     @FXML
-    private void openAuthorLink(){
+    private void openAuthorLink() {
         Util.OPEN_BROWSER("https://github.com/sunset-developer");
     }
 
-
     @FXML
-    private void add(){
+    private void add() {
         try {
             Theme createdTheme = new Theme(themeName.getText(), redMatrix.getText(), blueMatrix.getText(),
                     greenMatrix.getText(), time.getText());
@@ -127,7 +124,7 @@ public class DesktopController implements Initializable {
     }
 
     @FXML
-    private void update(){
+    private void update() {
         try {
             Theme selectedTheme = themeChoiceBox.getValue();
             Theme oldTheme = (Theme) selectedTheme.clone();
@@ -149,7 +146,7 @@ public class DesktopController implements Initializable {
     }
 
     @FXML
-    private void delete(){
+    private void delete() {
         Theme selectedTheme = themeChoiceBox.getSelectionModel().getSelectedItem();
         edctXMLEditor.deleteThemeInXml(selectedTheme);
         themeChoiceBox.getItems().remove(selectedTheme);
@@ -164,7 +161,7 @@ public class DesktopController implements Initializable {
 
 
     @FXML
-    private void clear(){
+    private void clear() {
         themeName.clear();
         redMatrix.clear();
         greenMatrix.clear();
@@ -174,7 +171,7 @@ public class DesktopController implements Initializable {
 
 
     @FXML
-    private void importGraphicsConf(){
+    private void importGraphicsConf() {
         File conf = selectedFile();
         edctXMLEditor.getPropertyEditor().saveToConf("gconf", conf.getAbsolutePath());
         edctXMLEditor.importGraphicsConf();
@@ -182,7 +179,7 @@ public class DesktopController implements Initializable {
     }
 
     @FXML
-    private void setTheme(){
+    private void setTheme() {
         try {
             edctXMLEditor.updateGraphicsConfXml(themeChoiceBox.getValue());
         } catch (NullPointerException e){
@@ -197,7 +194,7 @@ public class DesktopController implements Initializable {
         return f.showOpenDialog(new Stage());
     }
 
-    private Theme closestTheme(){
+    private Theme closestTheme() {
         Theme closest = null;
         for (Theme theme :  themeChoiceBox.getItems()) {
             if (theme.getLocalTime() != null && LocalTime.now().isAfter(theme.getLocalTime()))
@@ -206,7 +203,7 @@ public class DesktopController implements Initializable {
         return closest;
     }
 
-    private void sortThemeChoiceBox(){
+    private void sortThemeChoiceBox() {
         themeChoiceBox.getItems().sort((o1, o2) -> {
             if (o1.getLocalTime() == null || o2.getLocalTime() == null) {
                 return -1;
