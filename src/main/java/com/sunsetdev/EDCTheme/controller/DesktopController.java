@@ -47,7 +47,6 @@ public class DesktopController implements Initializable {
         themeEditor.getEngine().load("http://arkku.com/elite/hud_editor/");
     }
 
-
     private void tryToGetConfigurationFromProperties() {
         try {
             graphicsConfPath.setText(edctXMLEditor.getPropertyEditor().getKey("gconf"));
@@ -159,7 +158,6 @@ public class DesktopController implements Initializable {
         sortThemeChoiceBox();
     }
 
-
     @FXML
     private void clear() {
         themeName.clear();
@@ -168,7 +166,6 @@ public class DesktopController implements Initializable {
         blueMatrix.clear();
         time.clear();
     }
-
 
     @FXML
     private void importGraphicsConf() {
