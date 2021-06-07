@@ -25,11 +25,10 @@ public class EdctXMLEditor {
     private Document graphicsConfDocument;
     private final PropertyEditor propertyEditor = new PropertyEditor();
 
-
-    public EdctXMLEditor()  {
+    
+    public EdctXMLEditor() {
         importGraphicsConf();
     }
-
 
     private void backupGraphicsConf() throws IOException {
         File backup = new File(graphicsConfXmlFile + "-backup");
@@ -45,9 +44,8 @@ public class EdctXMLEditor {
         }
     }
 
-
-    public void importGraphicsConf(){
-        try{
+    public void importGraphicsConf() {
+        try {
             graphicsConfXmlFile = new File(propertyEditor.getKey("gconf"));
             graphicsConfDocument = documentBuilder(graphicsConfXmlFile);
             backupGraphicsConf();
@@ -56,7 +54,7 @@ public class EdctXMLEditor {
         }
     }
 
-    private void tryToCreateFile(){
+    private void tryToCreateFile() {
         try {
             if (!themesXmlFile.isFile() && !themesXmlFile.createNewFile())
                 throw new IOException("Error creating new file: " + themesXmlFile.getAbsolutePath());
@@ -65,7 +63,7 @@ public class EdctXMLEditor {
         }
     }
 
-    public void addThemeToXML(Theme theme){
+    public void addThemeToXML(Theme theme) {
         Element savedThemes = themesDocument.getRootElement();
         Element themeToBeSaved = new Element("theme");
         themeToBeSaved.addContent(new Element("name").setText(theme.getName()));
@@ -77,7 +75,7 @@ public class EdctXMLEditor {
         output(themesDocument, themesXmlFile);
     }
 
-    public void updateThemeInXml(Theme oldTheme, Theme newTheme){
+    public void updateThemeInXml(Theme oldTheme, Theme newTheme) {
         Element themeElement = getElementByTheme(oldTheme);
         themeElement.getChild("name").setText(newTheme.getName());
         themeElement.getChild("red_matrix").setText(newTheme.getRedMatrix());
@@ -95,7 +93,7 @@ public class EdctXMLEditor {
         tryToOutputGraphicsConf();
     }
 
-    private void tryToOutputGraphicsConf(){
+    private void tryToOutputGraphicsConf() {
         try {
             output(graphicsConfDocument, new File(propertyEditor.getKey("gconf")));
         } catch (IOException e) {
@@ -108,20 +106,18 @@ public class EdctXMLEditor {
         output(themesDocument, themesXmlFile);
     }
 
-    private Element getElementByTheme(Theme theme){
+    private Element getElementByTheme(Theme theme) {
         for (Element element : themesDocument.getRootElement().getChildren()) {
             if (element.getChild("name").getText().equals(theme.getName()))
                 return element;
         }
         return null;
-
     }
 
-
-    public Theme[] getThemesFromXml(){
+    public Theme[] getThemesFromXml() {
         List<Element> themeElements = themesDocument.getRootElement().getChildren();
         Theme[] themes = new Theme[themeElements.size()];
-        for (int i = 0; i < themeElements.size(); i++){
+        for (int i = 0; i < themeElements.size(); i++) {
             try {
                 Element themeElement =  themeElements.get(i);
                 themes[i] = new Theme(themeElement.getChildText("name"), themeElement.getChildText("red_matrix"),
@@ -135,8 +131,7 @@ public class EdctXMLEditor {
         return themes;
     }
 
-
-    private void output(Document doc, File file){
+    private void output(Document doc, File file) {
         try (FileOutputStream fo = new FileOutputStream(file)){
             XMLOutputter xmlOutput = new XMLOutputter();
             xmlOutput.setFormat(Format.getPrettyFormat());
@@ -147,8 +142,6 @@ public class EdctXMLEditor {
         }
     }
 
-
-
     private Document documentBuilder(File file){
         try {
             if (!themesXmlFile.exists()) {
@@ -158,7 +151,6 @@ public class EdctXMLEditor {
         } catch (JDOMException | IOException ignored) {}
         return new Document(new Element("themes"));
     }
-
 
     public PropertyEditor getPropertyEditor() {
         return propertyEditor;
