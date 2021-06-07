@@ -10,13 +10,13 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class Util {
-    public static void ALERT(String header, String content, Alert.AlertType alertType){
+    public static void ALERT(String header, String content, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType, content);
         alert.setHeaderText(header);
         alert.showAndWait();
     }
 
-    public static void OPEN_BROWSER(String url){
+    public static void OPEN_BROWSER(String url) {
         String os = System.getProperty("os.name").toLowerCase();
         Runtime rt = Runtime.getRuntime();
         try{
