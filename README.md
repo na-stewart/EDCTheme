@@ -5,7 +5,7 @@ Elite Dangerous Cockpit Theme Tool
 ![alt text](https://github.com/sunset-developer/EDCTheme/blob/master/img/edctimg.PNG)
 
 ## About
-This app was created for people who care about the aesthetic of their ship and like to modify it's colors frequently. It was also created for those who just want to use the app once and have it set the colors for them automatically at a specific time of the day. Either way this app can help enhance your Elite Dangerous Experience.
+This app was created for people who care about the aesthetic of their ship and like to modify it's colors frequently. It can also be used just once and will set your ship's theme automatically at a specific time of the day. Either way this app can help enhance your Elite Dangerous Experience.
 
 If you plan on using the time feature of this app, it is reccomended to run the app on startup.
 
