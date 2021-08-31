@@ -1,6 +1,6 @@
 # EDCTheme
 
-Elite Dangerous Cockpit Theme Tool
+Elite Dangerous Cockpit Theme tool
 
 ![alt text](https://github.com/sunset-developer/EDCTheme/blob/master/img/edctimg.PNG)
 
