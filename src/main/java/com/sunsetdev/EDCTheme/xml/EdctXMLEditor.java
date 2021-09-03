@@ -3,7 +3,7 @@ package main.java.com.sunsetdev.EDCTheme.xml;
 import javafx.scene.control.Alert;
 import main.java.com.sunsetdev.EDCTheme.model.Theme;
 import main.java.com.sunsetdev.EDCTheme.model.exception.MatrixFormattingException;
-import main.java.com.sunsetdev.EDCTheme.util.Util;
+import main.java.com.sunsetdev.EDCTheme.Util;
 import org.jdom2.Document;
 import org.jdom2.Element;
 

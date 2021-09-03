@@ -1,4 +1,4 @@
-package main.java.com.sunsetdev.EDCTheme.controller;
+package main.java.com.sunsetdev.EDCTheme;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -9,21 +9,20 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.com.sunsetdev.EDCTheme.model.Theme;
 import main.java.com.sunsetdev.EDCTheme.model.exception.MatrixFormattingException;
-import main.java.com.sunsetdev.EDCTheme.util.Util;
 import main.java.com.sunsetdev.EDCTheme.xml.EdctXMLEditor;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalTime;
-import java.util.Collections;
 import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
-public class DesktopController implements Initializable {
+public class MainController implements Initializable {
     @FXML
     private TextField themeName, redMatrix, greenMatrix, blueMatrix, graphicsConfPath, time;
     @FXML

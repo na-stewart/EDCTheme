@@ -1,13 +1,8 @@
-package main.java.com.sunsetdev.EDCTheme.util;
+package main.java.com.sunsetdev.EDCTheme;
 
 import javafx.scene.control.Alert;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.util.Date;
 
 public class Util {
     public static void ALERT(String header, String content, Alert.AlertType alertType) {
