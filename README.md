@@ -9,9 +9,6 @@ This app was created for people who care about the aesthetic of their ship and l
 
 If you plan on using the time feature of this app, it is reccomended to run the app on startup.
 
-## Video Tutorial
-https://streamable.com/csalcy
-
 ## Tutorial
 
 ### Import
